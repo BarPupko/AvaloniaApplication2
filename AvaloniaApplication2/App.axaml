@@ -1,0 +1,153 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:AvaloniaLinuxDemo.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="350"
+        Width="600"
+             xmlns:local="using:AvaloniaApplication2"
+             x:Class="AvaloniaApplication2.App">
+	<Grid Margin="8">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="*"></RowDefinition>
+			</Grid.RowDefinitions>
+			<Border BorderThickness="1" BorderBrush="Blue" Margin="4"
+                    Padding="0 0 0 8" CornerRadius="8">
+				<TabControl MinHeight="100">
+					<!--Ethernet Window -->
+					<TabItem Header="Ethernet">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition></ColumnDefinition>
+								<ColumnDefinition></ColumnDefinition>
+							</Grid.ColumnDefinitions>
+
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto"></RowDefinition>
+								<RowDefinition></RowDefinition>
+							</Grid.RowDefinitions>
+							<TextBlock Text="Remote Address" VerticalAlignment="Center"></TextBlock>
+							<TextBox Grid.Column="1" Grid.Row="0" Text="{Binding IpAddress}"></TextBox>
+						</Grid>
+
+
+					</TabItem>
+					<!--<TabItem Header="Simulator">
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="No configuration needed"></TextBlock>
+                    </Grid>
+                </TabItem>-->
+				</TabControl>
+			</Border>
+			<Border Grid.Row="1" BorderThickness="1" BorderBrush="Red" Margin="4"
+                    Padding="4" CornerRadius="8">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="Connect to controller" VerticalAlignment="Center" Margin="0 0 8 0"
+                                ></TextBlock>
+					<ToggleSwitch VerticalAlignment="Center" VerticalContentAlignment="Center" Command="{Binding Path=ToggleConnectToControllerCommand}"></ToggleSwitch>
+				</StackPanel>
+			</Border>
+			<Border Grid.Row="2" BorderThickness="1" BorderBrush="Green" Margin="4"
+                    Padding="4" CornerRadius="8">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"></RowDefinition>
+						<RowDefinition Height="Auto"></RowDefinition>
+						<RowDefinition Height="Auto"></RowDefinition>
+						<RowDefinition Height="Auto"></RowDefinition>
+						<RowDefinition></RowDefinition>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"></ColumnDefinition>
+						<ColumnDefinition></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<TextBlock Text="Axis:" VerticalAlignment="Center"></TextBlock>
+					<ComboBox Grid.Row="0" Grid.Column="1"
+                              Items="{Binding AvailableAxes}"
+                              SelectedItem="{Binding SelectedAxis}"
+                              IsEnabled="{Binding IsConnected}">
+						<ComboBox.ItemTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding }" />
+							</DataTemplate>
+						</ComboBox.ItemTemplate>
+					</ComboBox>
+
+					<TextBlock Grid.Column="0" Grid.Row="1" Text="Enable Axis" VerticalAlignment="Center" Margin=" 0 0 4 0"></TextBlock>
+					<ToggleSwitch Grid.Column="1" Grid.Row="1"
+                                  Command="{Binding ToggleEnablingMotorCommand}"
+                                  IsChecked="{Binding IsMotorEnabled, Mode=OneWay}"></ToggleSwitch>
+
+					<TextBlock Grid.Column="0" Grid.Row="2" Text="Increment"
+                               VerticalAlignment="Center"
+                               ></TextBlock>
+					<TextBox Grid.Column="1" Grid.Row="2"
+                             Text="{Binding IncrementValue}"></TextBox>
+					<Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin="0 8 0 0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition></ColumnDefinition>
+							<ColumnDefinition></ColumnDefinition>
+							<ColumnDefinition></ColumnDefinition>
+							<ColumnDefinition></ColumnDefinition>
+						</Grid.ColumnDefinitions>
+						<Button Content="Start"
+                                Command="{Binding StartMoveAxisCommand}"></Button>
+						<Button Grid.Column="1" Content="Stop"
+                                Command="{Binding StopMoveCommand}"></Button>
+						<TextBlock Grid.Column="2" Text="Status:" VerticalAlignment="Center"></TextBlock>
+						<TextBlock Grid.Column="3" Text="Running" VerticalAlignment="Center"
+                                   IsVisible="{Binding IsMotionInProgress}"></TextBlock>
+						<TextBlock Grid.Column="3" Text="Stopped" VerticalAlignment="Center"
+                                   IsVisible="{Binding !IsMotionInProgress}"></TextBlock>
+					</Grid>
+
+				</Grid>
+			</Border>
+		</Grid>
+		<Grid Grid.Column="1">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition></RowDefinition>
+				</Grid.RowDefinitions>
+				<Border BorderThickness="1" BorderBrush="Green" Margin="4"
+                        Padding="8" CornerRadius="8">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="Feedback Position:" VerticalAlignment="Center"
+                                   Margin="0 0 4 0"></TextBlock>
+						<TextBox IsReadOnly="True" Text="{Binding FposString}"></TextBox>
+					</StackPanel>
+				</Border>
+				<Border Grid.Row="1" BorderThickness="1" BorderBrush="Blue" Margin="4"
+                        Padding="4" CornerRadius="8">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"></RowDefinition>
+							<RowDefinition></RowDefinition>
+						</Grid.RowDefinitions>
+						<Grid Margin="4">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition></ColumnDefinition>
+								<ColumnDefinition Width="Auto"></ColumnDefinition>
+							</Grid.ColumnDefinitions>
+							<TextBlock Text="Notifications:" VerticalAlignment="Center"></TextBlock>
+							<Button Grid.Column="1" Content="Clear all"
+                                    Command="{Binding ClearLogCommand}"></Button>
+						</Grid>
+						<ListBox Grid.Row="1" Items="{Binding LogCollection}">
+
+						</ListBox>
+					</Grid>
+				</Border>
+			</Grid>
+		</Grid>
+
+	</Grid>
+</Window>

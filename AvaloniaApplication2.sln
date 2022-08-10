@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaApplication2", "AvaloniaApplication2\AvaloniaApplication2.csproj", "{452783AE-33E8-4C40-BE1B-C12D862864ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{452783AE-33E8-4C40-BE1B-C12D862864ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{452783AE-33E8-4C40-BE1B-C12D862864ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{452783AE-33E8-4C40-BE1B-C12D862864ED}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{452783AE-33E8-4C40-BE1B-C12D862864ED}.Debug|x64.Build.0 = Debug|Any CPU
+		{452783AE-33E8-4C40-BE1B-C12D862864ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{452783AE-33E8-4C40-BE1B-C12D862864ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{452783AE-33E8-4C40-BE1B-C12D862864ED}.Release|x64.ActiveCfg = Release|x64
+		{452783AE-33E8-4C40-BE1B-C12D862864ED}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B457409-8456-4017-AB20-C8EE35E1AB48}
+	EndGlobalSection
+EndGlobal
